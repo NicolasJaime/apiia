@@ -9,13 +9,17 @@ interface ChatBubbleProps {
 export function ChatBubble({ content, align = "left" }: ChatBubbleProps) {
   const isUser = align === "right";
 
+  const bubbleStyle = isUser
+    ? "bg-indigo-600 self-end"
+    : "bg-neutral-800 self-start";
+
   return (
     <View
-      className={`my-2 px-4 py-3 rounded-xl max-w-[90%] ${
-        isUser ? "bg-blue-600 self-end" : "bg-neutral-800 self-start"
-      }`}
+      className={`my-2 px-5 py-4 rounded-2xl max-w-[90%] ${bubbleStyle}`}
     >
-      <Text className="text-white text-sm">{content}</Text>
+      <Text className="text-white text-base leading-relaxed tracking-tight">
+        {content}
+      </Text>
     </View>
   );
 }

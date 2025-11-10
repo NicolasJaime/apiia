@@ -8,14 +8,14 @@ interface QueryInputProps {
 
 export function QueryInput({ value, onChange }: QueryInputProps) {
   return (
-    <View className="w-full max-w-md mb-5">
+    <View className="w-full max-w-xl mb-4">
       <TextInput
         value={value}
         onChangeText={onChange}
-        placeholder="¿Qué quieres saber hoy?"
-        placeholderTextColor="#cccccc"
+        placeholder="Escribe tu consulta aquí..."
+        placeholderTextColor="#888"
         multiline
-        className="bg-slate-900 text-white px-4 py-3 rounded-xl border border-slate-600 focus:border-pink-500"
+        className="bg-neutral-800 text-white px-5 py-4 rounded-2xl border border-neutral-700 focus:border-indigo-500 text-base leading-relaxed"
       />
     </View>
   );

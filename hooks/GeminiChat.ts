@@ -26,7 +26,7 @@ export function useGeminiAI() {
     })();
   }, []);
 
-  // Guardar historial en cada cambio
+
   useEffect(() => {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
   }, [messages]);
@@ -65,7 +65,7 @@ export function useGeminiAI() {
         );
       } catch (error) {
         console.error("Error al consultar Gemini:", error);
-        return "❌ Error al conectar con Gemini.";
+        return "❌ Error al conectar con Copilot.";
       }
     },
     [apiKey]
