@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Message } from "../utils/types";
+import { Message } from "../utils/types"; // ajusta la ruta si usas alias
 
 export default function ChatBubble({ message }: { message: Message }) {
   const isUser = message.role === "user";
@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
   },
   user: {
     alignSelf: "flex-end",
-    backgroundColor: "#DCF8C6", // Verde claro tipo WhatsApp
+    backgroundColor: "#DCF8C6",
   },
   bot: {
     alignSelf: "flex-start",
-    backgroundColor: "#E6F4FE", // Azul claro
+    backgroundColor: "#E6F4FE",
   },
   text: {
     fontSize: 16,

@@ -16,9 +16,6 @@ export default function ChatList({
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => <ChatBubble message={item} />}
       contentContainerStyle={{ padding: 10 }}
-      onContentSizeChange={() =>
-        flatListRef.current?.scrollToEnd({ animated: true })
-      }
     />
   );
 }
