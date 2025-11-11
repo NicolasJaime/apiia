@@ -63,7 +63,7 @@ export default function Index() {
       <ScrollView contentContainerClassName="p-6 items-center">
         <View className="mb-4">
           <Text className="text-2xl font-semibold text-white text-center">
-            Gemini Chat 💬
+            Copilot Chat 💬
           </Text>
         </View>
 
@@ -71,7 +71,7 @@ export default function Index() {
           <QueryInput value={prompt} onChange={setPrompt} />
 
           <ActionTrigger
-            label="Enviar"
+            label=">"
             loading={loading}
             onExecute={handleGeminiRequest}
             theme="primary"

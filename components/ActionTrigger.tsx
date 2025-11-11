@@ -1,5 +1,10 @@
 import React from "react";
-import { Pressable, Text, ActivityIndicator } from "react-native";
+import {
+  Pressable,
+  Text,
+  ActivityIndicator,
+  StyleSheet,
+} from "react-native";
 
 interface ActionTriggerProps {
   label?: string;
@@ -14,27 +19,62 @@ export function ActionTrigger({
   onExecute,
   theme = "primary",
 }: ActionTriggerProps) {
-  const baseStyle = "w-full py-3 rounded-full mt-4 transition-opacity duration-200";
-  const themeStyle =
-    theme === "primary"
-      ? "bg-indigo-600 text-white active:bg-indigo-700"
-      : "border border-indigo-400 text-indigo-300 active:border-indigo-500";
-
-  const disabledStyle = loading ? "opacity-50" : "";
+  const isPrimary = theme === "primary";
 
   return (
     <Pressable
       onPress={onExecute}
       disabled={loading}
-      className={`${baseStyle} ${themeStyle} ${disabledStyle}`}
+      style={[
+        styles.base,
+        isPrimary ? styles.primary : styles.ghost,
+        loading ? styles.disabled : null,
+      ]}
     >
       {loading ? (
-        <ActivityIndicator color={theme === "primary" ? "white" : "#4f46e5"} />
+        <ActivityIndicator
+          color={isPrimary ? "#ffffff" : "#4f46e5"}
+          size="small"
+        />
       ) : (
-        <Text className="text-center text-base font-semibold tracking-wide">
+        <Text style={[styles.text, isPrimary ? styles.textPrimary : styles.textGhost]}>
           {label}
         </Text>
       )}
     </Pressable>
   );
 }
+
+const styles = StyleSheet.create({
+  base: {
+    width: "100%",
+    paddingVertical: 12,
+    borderRadius: 9999,
+    marginTop: 16,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  primary: {
+    backgroundColor: "#4f46e5", // Indigo 600
+  },
+  ghost: {
+    borderWidth: 1,
+    borderColor: "#818cf8", // Indigo 400
+    backgroundColor: "transparent",
+  },
+  disabled: {
+    opacity: 0.5,
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: "600",
+    letterSpacing: 0.5,
+    textAlign: "center",
+  },
+  textPrimary: {
+    color: "#ffffff",
+  },
+  textGhost: {
+    color: "#818cf8",
+  },
+});
